@@ -1,0 +1,1991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO VIHARA - Where Journeys Become Stories</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B01;
+            --primary-dark: #e05d00;
+            --secondary: #2c3e50;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--dark);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Loading Animation */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loader.fade-out {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-inner {
+            width: 80px;
+            height: 80px;
+            position: relative;
+        }
+
+        .loader-circle {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 5px solid transparent;
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        .loader-circle:nth-child(2) {
+            border: 5px solid transparent;
+            border-bottom-color: var(--primary);
+            animation: spinReverse 1s linear infinite;
+            width: 70%;
+            height: 70%;
+            top: 15%;
+            left: 15%;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes spinReverse {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(-360deg); }
+        }
+
+        /* Header & Navigation */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            padding: 15px 5%;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo {
+            color: var(--primary);
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled .logo i {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        header.scrolled .nav-links a {
+            color: var(--dark);
+        }
+
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .menu-toggle {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        header.scrolled .menu-toggle {
+            color: var(--dark);
+        }
+
+        /* Hero Section with Enhanced Animations */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('https://wallpapercave.com/wp/wp9777808.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 2;
+            transform: translateY(20px);
+            opacity: 0;
+            animation: heroFadeIn 1s ease-out 0.5s forwards;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 40px;
+            text-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite 1.5s;
+            box-shadow: 0 10px 20px rgba(255, 107, 1, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .cta-button:hover:before {
+            left: 100%;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(255, 107, 1, 0.4);
+        }
+
+        .scrolling-car {
+            position: absolute;
+            bottom: 50px;
+            left: -200px;
+            width: 200px;
+            z-index: 10;
+            transition: transform 0.1s;
+            filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.5));
+            animation: carEntry 1s ease-out 0.3s forwards;
+        }
+
+        .hero-particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes heroFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes carEntry {
+            from {
+                left: -200px;
+            }
+            to {
+                left: 10%;
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* About Section */
+        .section {
+            padding: 100px 5%;
+            position: relative;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 20px;
+        }
+
+        .section-title p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            perspective: 1000px;
+        }
+
+        .flip-card {
+            height: 350px;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .flip-card:hover .flip-card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .flip-card-front, .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+        }
+
+        .flip-card-front {
+            background-color: #fff;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flip-card-front img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .flip-card-back {
+            background-color: var(--primary);
+            color: white;
+            transform: rotateY(180deg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .flip-card-back p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-text h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .features {
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover {
+            transform: translateX(10px);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            color: white;
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(255, 107, 1, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .feature-item:hover .feature-icon {
+            transform: rotate(15deg) scale(1.1);
+        }
+
+        .feature-content h4 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .feature-content p {
+            font-size: 0.9rem;
+            margin: 0;
+            color: var(--gray);
+        }
+
+        /* Enhanced Services Section */
+        .services {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+
+        .services:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://i.ibb.co/0jZR6yJ/ertiga-pattern.png') center/cover;
+            opacity: 0.03;
+            z-index: 0;
+        }
+
+        .services-carousel {
+            display: flex;
+            gap: 25px;
+            padding: 30px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            margin-bottom: 40px;
+        }
+
+        .services-carousel::-webkit-scrollbar {
+            display: none;
+        }
+
+        .service-card {
+            min-width: 320px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+            overflow: hidden;
+            position: relative;
+            scroll-snap-align: start;
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            z-index: 1;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .service-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .service-card:nth-child(1) { transition-delay: 0.1s; }
+        .service-card:nth-child(2) { transition-delay: 0.2s; }
+        .service-card:nth-child(3) { transition-delay: 0.3s; }
+        .service-card:nth-child(4) { transition-delay: 0.4s; }
+        .service-card:nth-child(5) { transition-delay: 0.5s; }
+
+        .service-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+
+        .service-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            opacity: 0;
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .service-card:hover .service-bg {
+            opacity: 1;
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            margin: 30px auto 20px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,107,1,0.1);
+            border-radius: 50%;
+            transform: scale(0);
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover .icon-bg {
+            transform: scale(1);
+            background: rgba(255,255,255,0.2);
+        }
+
+        .service-icon i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            transition: all 0.5s ease;
+            position: relative;
+            z-index: 2;
+        }
+
+        .service-card:hover .service-icon i {
+            color: white;
+            transform: rotateY(360deg);
+        }
+
+        .service-content {
+            padding: 0 30px 30px;
+            text-align: center;
+        }
+
+        .service-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            transition: all 0.5s ease;
+            position: relative;
+            display: inline-block;
+        }
+
+        .service-content h3:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover .service-content h3 {
+            color: white;
+        }
+
+        .service-card:hover .service-content h3:after {
+            width: 50px;
+        }
+
+        .service-desc p {
+            color: var(--gray);
+            margin-bottom: 20px;
+            transition: all 0.5s ease;
+            min-height: 60px;
+        }
+
+        .service-card:hover .service-desc p {
+            color: rgba(255,255,255,0.9);
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 25px;
+            text-align: left;
+        }
+
+        .service-features li {
+            margin-bottom: 8px;
+            color: var(--gray);
+            transition: all 0.5s ease;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .service-features i {
+            position: absolute;
+            left: 0;
+            top: 4px;
+            color: var(--primary);
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover .service-features li {
+            color: white;
+        }
+
+        .service-card:hover .service-features i {
+            color: white;
+        }
+
+        .service-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .price-bubble {
+            background: white;
+            border-radius: 20px;
+            padding: 8px 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--primary);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.5s ease;
+        }
+
+        .service-card:hover .price-bubble {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .service-cta {
+            position: relative;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            border-radius: 30px;
+            padding: 8px 20px 8px 15px;
+            background: rgba(255,107,1,0.1);
+            transition: all 0.5s ease;
+        }
+
+        .hover-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 100%);
+            transform: translateX(-100%);
+            transition: all 0.5s ease;
+        }
+
+        .service-cta i {
+            margin-left: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .service-cta:hover {
+            padding-right: 25px;
+            background: rgba(255,255,255,0.3);
+            color: white;
+        }
+
+        .service-cta:hover .hover-effect {
+            transform: translateX(100%);
+        }
+
+        .service-cta:hover i {
+            transform: translateX(5px);
+        }
+
+        .services-cta {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .cta-bubble {
+            display: inline-flex;
+            align-items: center;
+            background: var(--primary);
+            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(255,107,1,0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .cta-bubble i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Fleet Section */
+        .fleet {
+            text-align: center;
+            background-color: white;
+        }
+
+        .fleet-container {
+            background-color: rgba(255, 107, 1, 0.1);
+            border-radius: 15px;
+            padding: 50px;
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .fleet-image {
+            flex: 1;
+            min-width: 300px;
+            position: relative;
+        }
+
+        .fleet-image img {
+            max-width: 100%;
+            height: auto;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.2));
+            transition: all 0.5s ease;
+            transform: rotateY(20deg);
+            opacity: 0;
+        }
+
+        .fleet-image img.animate {
+            transform: rotateY(0deg);
+            opacity: 1;
+        }
+
+        .fleet-image:hover img {
+            transform: scale(1.05) rotateY(10deg);
+        }
+
+        .fleet-details {
+            flex: 1;
+            min-width: 300px;
+            text-align: left;
+        }
+
+        .fleet-details h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+
+        .fleet-features {
+            list-style: none;
+        }
+
+        .fleet-features li {
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            opacity: 0;
+            transform: translateX(-20px);
+            transition: all 0.3s ease;
+        }
+
+        .fleet-features li.animate {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fleet-features li:nth-child(1) { transition-delay: 0.1s; }
+        .fleet-features li:nth-child(2) { transition-delay: 0.2s; }
+        .fleet-features li:nth-child(3) { transition-delay: 0.3s; }
+        .fleet-features li:nth-child(4) { transition-delay: 0.4s; }
+        .fleet-features li:nth-child(5) { transition-delay: 0.5s; }
+        .fleet-features li:nth-child(6) { transition-delay: 0.6s; }
+
+        .fleet-features i {
+            margin-right: 15px;
+            color: var(--primary);
+            font-size: 1.2rem;
+            width: 25px;
+            text-align: center;
+        }
+
+        /* Booking Section */
+        .booking {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+        }
+
+        .booking .section-title h2,
+        .booking .section-title p {
+            color: white;
+        }
+
+        .booking-form {
+            background-color: white;
+            border-radius: 15px;
+            padding: 50px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            transform: scale(0.95);
+            opacity: 0;
+            transition: all 0.5s ease;
+        }
+
+        .booking-form.animate {
+            transform: scale(1);
+            opacity: 1;
+        }
+
+        .form-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid var(--light-gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(255, 107, 1, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .submit-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: all 0.5s ease;
+        }
+
+        .submit-btn:hover:before {
+            left: 100%;
+        }
+
+        .submit-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .confirmation-message {
+            display: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .confirmation-message i {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: white;
+        }
+
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info h3 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+            transform: translateX(-20px);
+            opacity: 0;
+        }
+
+        .contact-item.animate {
+            transform: translateX(0);
+            opacity: 1;
+        }
+
+        .contact-item:nth-child(1) { transition-delay: 0.1s; }
+        .contact-item:nth-child(2) { transition-delay: 0.2s; }
+        .contact-item:nth-child(3) { transition-delay: 0.3s; }
+
+        .contact-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover .contact-icon {
+            transform: rotate(15deg) scale(1.1);
+            box-shadow: 0 5px 15px rgba(255, 107, 1, 0.3);
+        }
+
+        .contact-content h4 {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .contact-content p {
+            color: var(--gray);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 40px;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary);
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            transform: translateY(20px);
+            opacity: 0;
+        }
+
+        .social-links a.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .social-links a:nth-child(1) { transition-delay: 0.1s; }
+        .social-links a:nth-child(2) { transition-delay: 0.2s; }
+        .social-links a:nth-child(3) { transition-delay: 0.3s; }
+        .social-links a:nth-child(4) { transition-delay: 0.4s; }
+
+        .social-links a:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-5px) scale(1.1);
+        }
+
+        .contact-form {
+            flex: 1;
+            min-width: 300px;
+            background-color: var(--light);
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.5s ease 0.2s;
+        }
+
+        .contact-form.animate {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .contact-form h3 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 30px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--secondary);
+            color: white;
+            text-align: center;
+            padding: 30px 5%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .footer-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .footer-links a:hover:after {
+            width: 100%;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 107, 1, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(255, 107, 1, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(255, 107, 1, 0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background-color: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 40px 0;
+                transition: all 0.5s ease;
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .nav-links li {
+                margin: 15px 0;
+            }
+            
+            .nav-links a {
+                color: var(--dark);
+                font-size: 1.2rem;
+            }
+            
+            header.scrolled .nav-links {
+                top: 70px;
+                height: calc(100vh - 70px);
+            }
+            
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section {
+                padding: 80px 5%;
+            }
+            
+            .flip-card {
+                height: 300px;
+            }
+            
+            .service-card {
+                width: 100%;
+                max-width: 400px;
+            }
+            
+            .fleet-container {
+                padding: 30px;
+            }
+            
+            .booking-form {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .cta-button {
+                padding: 12px 30px;
+                font-size: 1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .section-title p {
+                font-size: 1rem;
+            }
+            
+            .flip-card {
+                height: 250px;
+            }
+            
+            .contact-form {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="loader-circle"></div>
+            <div class="loader-circle"></div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="header">
+        <a href="#" class="logo"><i class="fas fa-car"></i>MY VIHARA</a>
+        <div class="menu-toggle" id="menuToggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#fleet">Our Fleet</a></li>
+            <li><a href="#booking">Book a Ride</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>MY VIHARA</h1>
+            <p>Where Journeys Become Stories</p>
+            <a href="#booking" class="cta-button">Book Your Ride Now</a>
+        </div>
+        <img src="https://pngimg.com/d/taxi_PNG22.png" alt="Maruti Suzuki Ertiga" class="scrolling-car" id="animatedCar">
+        <div class="hero-particles" id="heroParticles"></div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section" id="about">
+        <div class="section-title">
+            <h2>About MY VIHARA</h2>
+            <p>Discover the story behind our travel cab service and what makes us different</p>
+        </div>
+        <div class="about-content">
+            <div class="about-image">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <img src="https://apollo.olx.in/v1/files/wjzwc3ea36im1-IN/image" alt="Ertiga Interior">
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Spacious and comfortable 7-seater for all your travel needs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text">
+                <h3>Our Story</h3>
+                <p>MY VIHARA was founded with a simple mission: to make every journey memorable. We understand that travel isn't just about reaching a destination - it's about the stories you create along the way. With our premium Maruti Suzuki Ertiga fleet, we ensure comfort, safety, and reliability for all your travels.</p>
+                <div class="features">
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Safe Travels</h4>
+                            <p>Experienced drivers and well-maintained vehicles</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-map-marked-alt"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>Any Destination</h4>
+                            <p>City rides or long distance - we've got you covered</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon">
+                            <i class="fas fa-headset"></i>
+                        </div>
+                        <div class="feature-content">
+                            <h4>24/7 Support</h4>
+                            <p>Always available to assist you with your travel needs</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section services" id="services">
+        <div class="section-title">
+            <h2>Our Premium Services</h2>
+            <p>Experience travel redefined with our luxury fleet</p>
+        </div>
+        
+        <div class="services-carousel">
+            <!-- Airport Transfers -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="icon-bg"></div>
+                    <i class="fas fa-plane"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Airport Transfers</h3>
+                    <div class="service-desc">
+                        <p>Hassle-free airport journeys with real-time flight tracking and VIP meet & greet services.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Flight monitoring</li>
+                            <li><i class="fas fa-check-circle"></i> Luggage handling</li>
+                            <li><i class="fas fa-check-circle"></i> VIP concierge</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                        
+                        <div class="service-cta">
+                            <span class="hover-effect"></span>
+                            <span>Book Now</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-bg"></div>
+            </div>
+
+            <!-- City Tours -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="icon-bg"></div>
+                    <i class="fas fa-city"></i>
+                </div>
+                <div class="service-content">
+                    <h3>City Tours</h3>
+                    <div class="service-desc">
+                        <p>Discover hidden gems with our expert-guided or self-paced city exploration packages.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Custom itineraries</li>
+                            <li><i class="fas fa-check-circle"></i> Multilingual guides</li>
+                            <li><i class="fas fa-check-circle"></i> Photo hotspots</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                        
+                        <div class="service-cta">
+                            <span class="hover-effect"></span>
+                            <span>Explore</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-bg"></div>
+            </div>
+
+            <!-- Outstation Trips -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="icon-bg"></div>
+                    <i class="fas fa-route"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Outstation Trips</h3>
+                    <div class="service-desc">
+                        <p>Comfortable long-distance travel with flexible scheduling and multiple stop options.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Multi-day packages</li>
+                            <li><i class="fas fa-check-circle"></i> Hotel coordination</li>
+                            <li><i class="fas fa-check-circle"></i> Scenic routes</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                        
+                        <div class="service-cta">
+                            <span class="hover-effect"></span>
+                            <span>Plan Trip</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-bg"></div>
+            </div>
+
+            <!-- Corporate Travel -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="icon-bg"></div>
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Corporate Travel</h3>
+                    <div class="service-desc">
+                        <p>Professional transportation with premium amenities for your business needs.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Mobile office</li>
+                            <li><i class="fas fa-check-circle"></i> Executive class</li>
+                            <li><i class="fas fa-check-circle"></i> Invoice billing</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                       
+                        <div class="service-cta">
+                            <span class="hover-effect"></span>
+                            <span>Enquire</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-bg"></div>
+            </div>
+
+            <!-- Special Occasions -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <div class="icon-bg"></div>
+                    <i class="fas fa-glass-cheers"></i>
+                </div>
+                <div class="service-content">
+                    <h3>Special Occasions</h3>
+                    <div class="service-desc">
+                        <p>Make your events unforgettable with our decorated vehicles and premium service.</p>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> Vehicle decoration</li>
+                            <li><i class="fas fa-check-circle"></i> Champagne service</li>
+                            <li><i class="fas fa-check-circle"></i> Photo package</li>
+                        </ul>
+                    </div>
+                    <div class="service-footer">
+                       
+                        <div class="service-cta">
+                            <span class="hover-effect"></span>
+                            <span>Celebrate</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="service-bg"></div>
+            </div>
+        </div>
+        
+        <div class="services-cta">
+            <div class="cta-bubble">
+                <i class="fas fa-gem"></i>
+                <span>All services include complimentary water, phone charging, and premium comfort</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fleet Section -->
+    <section class="section fleet" id="fleet">
+        <div class="section-title">
+            <h2>Our Fleet</h2>
+            <p>Experience comfort and reliability with our premium vehicle</p>
+        </div>
+        <div class="fleet-container">
+            <div class="fleet-image">
+                <img src="https://stimg.cardekho.com/images/carexteriorimages/930x620/Maruti/Ertiga-Tour/9617/1741068787046/front-left-side-47.jpg" alt="Maruti Suzuki Ertiga" id="vehicleImage">
+            </div>
+            <div class="fleet-details">
+                <h3>Maruti Suzuki Ertiga</h3>
+                <ul class="fleet-features">
+                    <li><i class="fas fa-users"></i> 7 Seater - Comfortable for 6 adults + driver</li>
+                    <li><i class="fas fa-suitcase"></i> Ample luggage space for all your travel needs</li>
+                    <li><i class="fas fa-snowflake"></i> Air conditioned for maximum comfort</li>
+                    <li><i class="fas fa-mobile-alt"></i> Mobile charging ports for all passengers</li>
+                    <li><i class="fas fa-shield-alt"></i> Regular maintenance and safety checks</li>
+                    <li><i class="fas fa-tint"></i> Clean and sanitized after every ride</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="section booking" id="booking">
+        <div class="section-title">
+            <h2>Book Your Ride</h2>
+            <p>Fill out the form below and we'll get back to you shortly</p>
+        </div>
+        <form class="booking-form" id="bookingForm">
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email">
+                </div>
+                <div class="form-group">
+                    <label for="passengers">Number of Passengers</label>
+                    <select id="passengers" name="passengers">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6" selected>6</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="pickup">Pickup Location</label>
+                    <input type="text" id="pickup" name="pickup" required>
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" name="destination" required>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="date">Pickup Date</label>
+                    <input type="date" id="date" name="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="time">Pickup Time</label>
+                    <input type="time" id="time" name="time" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="notes">Special Instructions</label>
+                <textarea id="notes" name="notes" rows="3"></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Confirm Booking</button>
+        </form>
+        <div class="confirmation-message" id="confirmationMessage">
+            <i class="fas fa-check-circle"></i>
+            <h3>Booking Request Received!</h3>
+            <p>We'll contact you shortly to confirm your ride details.</p>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section contact" id="contact">
+        <div class="section-title">
+            <h2>Contact Us</h2>
+            <p>Have questions or need assistance? Reach out to us anytime</p>
+        </div>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Get in Touch</h3>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-phone-alt"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h4>Call Us</h4>
+                        <p>+91 94960 44589</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h4>Email Us</h4>
+                        <p>govihara@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="contact-content">
+                        <h4>Our Location</h4>
+                        <p>Kottayam , Kerala , IN</p>
+                    </div>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="contact-form">
+                <h3>Send a Message</h3>
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="contactName">Your Name</label>
+                        <input type="text" id="contactName" name="contactName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Your Email</label>
+                        <input type="email" id="contactEmail" name="contactEmail" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactSubject">Subject</label>
+                        <input type="text" id="contactSubject" name="contactSubject">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactMessage">Your Message</label>
+                        <textarea id="contactMessage" name="contactMessage" rows="4" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">MY VIHARA</div>
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#services">Services</a>
+                <a href="#fleet">Our Fleet</a>
+                <a href="#booking">Book a Ride</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="copyright">
+                &copy; 2025 MY VIHARA. All Rights Reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Loading Animation
+        window.addEventListener('load', function() {
+            const loader = document.querySelector('.loader');
+            setTimeout(function() {
+                loader.classList.add('fade-out');
+                
+                // Create floating particles for hero section
+                createParticles();
+                
+                // Initialize animations after load
+                initAnimations();
+            }, 800);
+        });
+
+        // Create floating particles
+        function createParticles() {
+            const heroParticles = document.getElementById('heroParticles');
+            const particleCount = 30;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('particle');
+                
+                // Random size between 2px and 6px
+                const size = Math.random() * 4 + 2;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                
+                // Random position
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.top = `${Math.random() * 100}%`;
+                
+                // Random animation duration
+                const duration = Math.random() * 20 + 10;
+                particle.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                
+                heroParticles.appendChild(particle);
+            }
+        }
+
+        // Initialize animations
+        function initAnimations() {
+            // Animate service cards
+            const serviceCards = document.querySelectorAll('.service-card');
+            serviceCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate');
+                }, index * 150);
+            });
+
+            // Animate fleet image and features
+            const fleetImage = document.getElementById('vehicleImage');
+            const fleetFeatures = document.querySelectorAll('.fleet-features li');
+            
+            setTimeout(() => {
+                fleetImage.classList.add('animate');
+                
+                fleetFeatures.forEach((feature, index) => {
+                    setTimeout(() => {
+                        feature.classList.add('animate');
+                    }, index * 100);
+                });
+            }, 500);
+
+            // Animate booking form
+            const bookingForm = document.querySelector('.booking-form');
+            setTimeout(() => {
+                bookingForm.classList.add('animate');
+            }, 300);
+
+            // Animate contact items
+            const contactItems = document.querySelectorAll('.contact-item');
+            const socialLinks = document.querySelectorAll('.social-links a');
+            const contactForm = document.querySelector('.contact-form');
+            
+            contactItems.forEach((item, index) => {
+                setTimeout(() => {
+                    item.classList.add('animate');
+                }, index * 100);
+            });
+            
+            socialLinks.forEach((link, index) => {
+                setTimeout(() => {
+                    link.classList.add('animate');
+                }, index * 100 + 300);
+            });
+            
+            setTimeout(() => {
+                contactForm.classList.add('animate');
+            }, 500);
+        }
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 100) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+            
+            // Animated Car Effect
+            const car = document.getElementById('animatedCar');
+            const scrollPosition = window.scrollY;
+            const windowHeight = window.innerHeight;
+            
+            // Move car horizontally based on scroll
+            const moveAmount = (scrollPosition / windowHeight) * 100;
+            car.style.transform = `translateX(${Math.min(moveAmount * 10, 100)}vw) rotateY(${moveAmount}deg)`;
+            
+            // Car disappears after certain scroll
+            if (scrollPosition > windowHeight * 0.7) {
+                car.style.opacity = 0;
+            } else {
+                car.style.opacity = 1;
+            }
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+        
+        menuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            menuToggle.innerHTML = navLinks.classList.contains('active') ? 
+                '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                if (navLinks.classList.contains('active')) {
+                    navLinks.classList.remove('active');
+                    menuToggle.innerHTML = '<i class="fas fa-bars"></i>';
+                }
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Booking Form Submission
+        const bookingForm = document.getElementById('bookingForm');
+        const confirmationMessage = document.getElementById('confirmationMessage');
+        
+        bookingForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to your server
+            // For demo purposes, we'll just show the confirmation message
+            
+            this.style.display = 'none';
+            confirmationMessage.style.display = 'block';
+            
+            // Reset form after 5 seconds (for demo)
+            setTimeout(() => {
+                this.reset();
+                this.style.display = 'block';
+                confirmationMessage.style.display = 'none';
+            }, 5000);
+        });
+
+        // Contact Form Submission
+        const contactForm = document.getElementById('contactForm');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Here you would typically send the form data to your server
+            // For demo purposes, we'll just show an alert
+            
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+
+        // Vehicle Image Animation
+        const vehicleImage = document.getElementById('vehicleImage');
+        
+        vehicleImage.addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.05) rotateY(10deg)';
+        });
+        
+        vehicleImage.addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1) rotateY(0deg)';
+        });
+
+        // Service Card Tilt Effect
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const x = e.clientX - card.getBoundingClientRect().left;
+                const y = e.clientY - card.getBoundingClientRect().top;
+                
+                const centerX = card.offsetWidth / 2;
+                const centerY = card.offsetHeight / 2;
+                
+                const angleX = (y - centerY) / 20;
+                const angleY = (centerX - x) / 20;
+                
+                card.style.transform = `perspective(1000px) rotateX(${angleX}deg) rotateY(${angleY}deg) scale(1.02) translateY(-10px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale(1) translateY(-10px)';
+            });
+        });
+
+        // Auto-scroll service carousel
+        const carousel = document.querySelector('.services-carousel');
+        let autoScrollInterval;
+        
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(() => {
+                if (carousel.scrollLeft + carousel.offsetWidth >= carousel.scrollWidth - 10) {
+                    carousel.scrollTo({
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    carousel.scrollBy({
+                        left: 300,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 3000);
+        }
+        
+        function stopAutoScroll() {
+            clearInterval(autoScrollInterval);
+        }
+        
+        carousel.addEventListener('mouseenter', stopAutoScroll);
+        carousel.addEventListener('mouseleave', startAutoScroll);
+        startAutoScroll();
+    </script>
+</body>
+</html>
