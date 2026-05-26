@@ -1,0 +1,7 @@
+# My Vihara — Security Policy
+# https://myvihara.in/.well-known/security.txt
+
+Contact: mailto:myvihara05@gmail.com
+Preferred-Languages: en, ml
+Canonical: https://myvihara.in/.well-known/security.txt
+Expires: 2026-05-26T00:00:00.000Z

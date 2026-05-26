@@ -1,0 +1,10 @@
+# Redirects (Netlify format — keep for portability)
+# If ever migrating from GitHub Pages
+
+/home          /           301
+/book          /#booking   301
+/services      /#services  301
+/fleet         /#fleet     301
+/faq           /#faq       301
+/contact       /#booking   301
+/about         /#about     301

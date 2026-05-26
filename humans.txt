@@ -1,0 +1,14 @@
+/* TEAM */
+Brand: My Vihara
+Location: Kottayam, Kerala, India
+Contact: myvihara05@gmail.com
+
+/* SITE */
+Last update: 2025-05-26
+Language: English / Malayalam
+Standards: HTML5, CSS3, Schema.org (JSON-LD), llmstxt.org
+Components: Semantic HTML, Accessible, Mobile-first, GitHub Pages
+
+/* THANKS */
+Built for: My Vihara Kottayam
+Powered by: GitHub Pages
