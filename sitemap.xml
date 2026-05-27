@@ -1,92 +1,103 @@
+```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset
-  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="https://www.google.com/schemas/sitemap-image/1.1">
 
-  <!-- ═══════════════════════════════════════
-       SITEMAP — My Vihara (myvihara.in)
-       Taxi & Cab Service — Kottayam, Kerala
-       Generated: 2025-05-26
-  ═══════════════════════════════════════ -->
+    <!-- Homepage -->
+    <url>
+        <loc>https://myvihara.in/</loc>
+        <lastmod>2025-05-26</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
 
-  <!-- HOMEPAGE — Priority 1.0 -->
-  <url>
-    <loc>https://myvihara.in/</loc>
-    <lastmod>2025-05-26</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en-IN" href="https://myvihara.in/"/>
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://myvihara.in/"/>
-    <image:image>
-      <image:loc>https://myvihara.in/img/9.jpg</image:loc>
-      <image:title>My Vihara — Taxi and Cab Service Kottayam Kerala</image:title>
-      <image:caption>My Vihara premium cab service — 24/7 taxi near Kottayam Medical College, airport transfers and outstation trips across Kerala</image:caption>
-      <image:geo_location>Kottayam, Kerala, India</image:geo_location>
-    </image:image>
-    <image:image>
-      <image:loc>https://myvihara.in/img/IMG_0552.JPG</image:loc>
-      <image:title>My Vihara cab — clean, air-conditioned taxi Kottayam</image:title>
-      <image:caption>Clean, air-conditioned cab with ample luggage space — My Vihara taxi service Kottayam Kerala</image:caption>
-      <image:geo_location>Kottayam, Kerala, India</image:geo_location>
-    </image:image>
-    <image:image>
-      <image:loc>https://myvihara.in/img/1.png</image:loc>
-      <image:title>My Vihara cab interior — comfortable taxi Kottayam</image:title>
-      <image:caption>Comfortable, spacious cab interior — My Vihara taxi service Kottayam Kerala</image:caption>
-      <image:geo_location>Kottayam, Kerala, India</image:geo_location>
-    </image:image>
-    <image:image>
-      <image:loc>https://myvihara.in/img/2.png</image:loc>
-      <image:title>My Vihara on the road — taxi Kottayam Kerala</image:title>
-      <image:caption>My Vihara cab on the road — outstation and city taxi service Kottayam, Kerala</image:caption>
-      <image:geo_location>Kottayam, Kerala, India</image:geo_location>
-    </image:image>
-  </url>
+        <image:image>
+            <image:loc>https://myvihara.in/img/9.jpg</image:loc>
+            <image:title>My Vihara — Taxi and Cab Service Kottayam Kerala</image:title>
+            <image:caption>
+                My Vihara premium cab service — 24/7 taxi near Kottayam Medical College, airport transfers and outstation trips across Kerala
+            </image:caption>
+            <image:geo_location>Kottayam, Kerala, India</image:geo_location>
+        </image:image>
 
-  <!-- SECTION ANCHORS — for AI and rich result targeting -->
+        <image:image>
+            <image:loc>https://myvihara.in/img/IMG_0552.JPG</image:loc>
+            <image:title>My Vihara cab — clean, air-conditioned taxi Kottayam</image:title>
+            <image:caption>
+                Clean, air-conditioned cab with ample luggage space — My Vihara taxi service Kottayam Kerala
+            </image:caption>
+            <image:geo_location>Kottayam, Kerala, India</image:geo_location>
+        </image:image>
 
-  <url>
-    <loc>https://myvihara.in/#services</loc>
-    <lastmod>2025-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+        <image:image>
+            <image:loc>https://myvihara.in/img/1.png</image:loc>
+            <image:title>My Vihara cab interior — comfortable taxi Kottayam</image:title>
+            <image:caption>
+                Comfortable, spacious cab interior — My Vihara taxi service Kottayam Kerala
+            </image:caption>
+            <image:geo_location>Kottayam, Kerala, India</image:geo_location>
+        </image:image>
 
-  <url>
-    <loc>https://myvihara.in/#about</loc>
-    <lastmod>2025-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+        <image:image>
+            <image:loc>https://myvihara.in/img/2.png</image:loc>
+            <image:title>My Vihara on the road — taxi Kottayam Kerala</image:title>
+            <image:caption>
+                My Vihara cab on the road — outstation and city taxi service Kottayam, Kerala
+            </image:caption>
+            <image:geo_location>Kottayam, Kerala, India</image:geo_location>
+        </image:image>
+    </url>
 
-  <url>
-    <loc>https://myvihara.in/#fleet</loc>
-    <lastmod>2025-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
+    <!-- Sections -->
+    <url>
+        <loc>https://myvihara.in/#services</loc>
+        <lastmod>2025-05-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
 
-  <url>
-    <loc>https://myvihara.in/#faq</loc>
-    <lastmod>2025-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+    <url>
+        <loc>https://myvihara.in/#about</loc>
+        <lastmod>2025-05-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 
-  <url>
-    <loc>https://myvihara.in/#booking</loc>
-    <lastmod>2025-05-26</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
-  </url>
+    <url>
+        <loc>https://myvihara.in/#fleet</loc>
+        <lastmod>2025-05-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
 
-  <!-- 404 PAGE -->
-  <url>
-    <loc>https://myvihara.in/404.html</loc>
-    <lastmod>2025-05-26</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.1</priority>
-  </url>
+    <url>
+        <loc>https://myvihara.in/#faq</loc>
+        <lastmod>2025-05-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://myvihara.in/#booking</loc>
+        <lastmod>2025-05-26</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.9</priority>
+    </url>
+
+    <!-- Medical College Taxi Page -->
+    <url>
+        <loc>https://myvihara.in/taxi-kottayam-medical-college.html</loc>
+        <lastmod>2025-05-27</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>1.0</priority>
+    </url>
+
+    <!-- 404 Page -->
+    <url>
+        <loc>https://myvihara.in/404.html</loc>
+        <lastmod>2025-05-26</lastmod>
+        <changefreq>yearly</changefreq>
+        <priority>0.1</priority>
+    </url>
 
 </urlset>
+```
