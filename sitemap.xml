@@ -1,103 +1,117 @@
-```xml
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:image="https://www.google.com/schemas/sitemap-image/1.1">
+<!-- =====================================================
+     sitemap.xml — myvihara.in
+     Generated: 2026-05-30
+     
+     HOW TO USE:
+     1. Upload this file to your hosting root (same folder as index.html)
+     2. Verify it's live at: https://myvihara.in/sitemap.xml
+     3. Go to: https://search.google.com/search-console
+     4. Sitemaps → Add sitemap → paste: sitemap.xml → Submit
+     
+     UPDATE RULE:
+     Every time you upload a new page, add it here and re-submit.
+     Also update <lastmod> on any page you edit significantly.
+     ===================================================== -->
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 
-    <!-- Homepage -->
-    <url>
-        <loc>https://myvihara.in/</loc>
-        <lastmod>2025-05-26</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
+  <!-- ══════════════════════════════════════
+       TIER 1 — Core pages (highest priority)
+  ══════════════════════════════════════ -->
 
-        <image:image>
-            <image:loc>https://myvihara.in/img/9.jpg</image:loc>
-            <image:title>My Vihara — Taxi and Cab Service Kottayam Kerala</image:title>
-            <image:caption>
-                My Vihara premium cab service — 24/7 taxi near Kottayam Medical College, airport transfers and outstation trips across Kerala
-            </image:caption>
-            <image:geo_location>Kottayam, Kerala, India</image:geo_location>
-        </image:image>
+  <!-- Homepage -->
+  <url>
+    <loc>https://myvihara.in/</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
 
-        <image:image>
-            <image:loc>https://myvihara.in/img/IMG_0552.JPG</image:loc>
-            <image:title>My Vihara cab — clean, air-conditioned taxi Kottayam</image:title>
-            <image:caption>
-                Clean, air-conditioned cab with ample luggage space — My Vihara taxi service Kottayam Kerala
-            </image:caption>
-            <image:geo_location>Kottayam, Kerala, India</image:geo_location>
-        </image:image>
+  <!-- Sabarimala — peak season, highest traffic potential -->
+  <url>
+    <loc>https://myvihara.in/taxi-kottayam-to-sabarimala.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
 
-        <image:image>
-            <image:loc>https://myvihara.in/img/1.png</image:loc>
-            <image:title>My Vihara cab interior — comfortable taxi Kottayam</image:title>
-            <image:caption>
-                Comfortable, spacious cab interior — My Vihara taxi service Kottayam Kerala
-            </image:caption>
-            <image:geo_location>Kottayam, Kerala, India</image:geo_location>
-        </image:image>
+  <!-- ══════════════════════════════════════
+       TIER 2 — High-volume routes (upload these next)
+  ══════════════════════════════════════ -->
 
-        <image:image>
-            <image:loc>https://myvihara.in/img/2.png</image:loc>
-            <image:title>My Vihara on the road — taxi Kottayam Kerala</image:title>
-            <image:caption>
-                My Vihara cab on the road — outstation and city taxi service Kottayam, Kerala
-            </image:caption>
-            <image:geo_location>Kottayam, Kerala, India</image:geo_location>
-        </image:image>
-    </url>
+  <!-- Medical College taxi — 24/7 high intent local search -->
+  <url>
+    <loc>https://myvihara.in/taxi-kottayam-medical-college.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-    <!-- Sections -->
-    <url>
-        <loc>https://myvihara.in/#services</loc>
-        <lastmod>2025-05-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
+  <!-- Cochin Airport transfer — most searched Kerala cab route -->
+  <url>
+    <loc>https://myvihara.in/taxi-kottayam-to-cochin-airport.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
 
-    <url>
-        <loc>https://myvihara.in/#about</loc>
-        <lastmod>2025-05-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
+  <!-- ══════════════════════════════════════
+       TIER 3 — Outstation routes (build these after Sabarimala ranks)
+  ══════════════════════════════════════ -->
 
-    <url>
-        <loc>https://myvihara.in/#fleet</loc>
-        <lastmod>2025-05-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.7</priority>
-    </url>
+  <!-- Munnar — most searched Kerala hill station taxi -->
+  <url>
+    <loc>https://myvihara.in/taxi-kottayam-to-munnar.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://myvihara.in/#faq</loc>
-        <lastmod>2025-05-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.8</priority>
-    </url>
+  <!-- Thekkady / Periyar — popular wildlife destination -->
+  <url>
+    <loc>https://myvihara.in/taxi-kottayam-to-thekkady.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <url>
-        <loc>https://myvihara.in/#booking</loc>
-        <lastmod>2025-05-26</lastmod>
-        <changefreq>monthly</changefreq>
-        <priority>0.9</priority>
-    </url>
+  <!-- Trivandrum Airport — second major airport transfer -->
+  <url>
+    <loc>https://myvihara.in/taxi-kottayam-to-trivandrum-airport.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
 
-    <!-- Medical College Taxi Page -->
-    <url>
-        <loc>https://myvihara.in/taxi-kottayam-medical-college.html</loc>
-        <lastmod>2025-05-27</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>1.0</priority>
-    </url>
+  <!-- ══════════════════════════════════════
+       TIER 4 — Supporting routes
+  ══════════════════════════════════════ -->
 
-    <!-- 404 Page -->
-    <url>
-        <loc>https://myvihara.in/404.html</loc>
-        <lastmod>2025-05-26</lastmod>
-        <changefreq>yearly</changefreq>
-        <priority>0.1</priority>
-    </url>
+  <!-- Alleppey / Alappuzha — houseboat + backwater tourist traffic -->
+  <url>
+    <loc>https://myvihara.in/taxi-kottayam-to-alleppey.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Vagamon — growing hill station search volume -->
+  <url>
+    <loc>https://myvihara.in/taxi-kottayam-to-vagamon.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Kumarakom — backwater resort destination -->
+  <url>
+    <loc>https://myvihara.in/taxi-kottayam-to-kumarakom.html</loc>
+    <lastmod>2026-05-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
 
 </urlset>
-```
